@@ -1,0 +1,23 @@
+{% extends 'CRRWebBundle::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Wyślij swoją paczkę!
+{% endblock %}
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span12">
+            <h2>
+                Hello in Carrier!
+            </h2>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span9">
+            {% include "CRRWebBundle:Default:homepage_content.html.twig" %}
+        </div>
+        <div class="span3">
+            {% include "CRRWebBundle:Default:homepage_side.html.twig" %}
+        </div>
+    </div>
+{% endblock %}

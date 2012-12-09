@@ -1,0 +1,29 @@
+{% extends 'MopaBootstrapBundle::base_css.html.twig' %}
+
+{% block head_style %}
+    {% stylesheets
+        '@CRRWebBundle/Resources/public/css/bootstrap.css'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+
+{% endblock head_style %}
+
+{% block title %}
+    Carrier
+{% endblock %}
+
+{% block navbar %}
+    {#{{ parent() }}#}
+{% endblock navbar %}
+
+{% block headline %}
+    <a href="{{ path("homepage") }}">Carrier</a>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block footer %}
+    <p class="muted" style="text-align:center;margin-top:30px;padding-top:15px;border-top:1px solid #EEE;font-style:italic"><small>Carrier</small></p>
+{% endblock %}
