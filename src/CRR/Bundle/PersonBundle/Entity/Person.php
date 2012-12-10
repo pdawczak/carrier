@@ -43,6 +43,20 @@ class Person
     private $companyName;
 
     /**
+     * @var string $email
+     *
+     * @ORM\Column(type="string", length=150)
+     */
+    private $email;
+
+    /**
+     * @var string $phone
+     *
+     * @ORM\Column(type="string", length=20)
+     */
+    private $phone;
+
+    /**
      * @var Address $address
      *
      * @ORM\OneToOne(targetEntity="Address")
@@ -149,5 +163,51 @@ class Person
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Person
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return Person
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }
