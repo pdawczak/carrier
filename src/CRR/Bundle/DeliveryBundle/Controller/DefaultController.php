@@ -4,6 +4,7 @@ namespace CRR\Bundle\DeliveryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use CRR\Bundle\DeliveryBundle\Form\DeliveryType;
@@ -27,6 +28,20 @@ class DefaultController extends Controller
      * @Template()
      */
     public function newAction()
+    {
+        $form = $this->createForm(new DeliveryType());
+
+        return array(
+            'form'  => $form->createView(),
+        );
+    }
+
+    /**
+     * @Route("/new", name="crr_delivery_create")
+     * @Method("POST")
+     * @Template("CRRDeliveryBundle:Default:new.html.twig")
+     */
+    public function createAction()
     {
         $form = $this->createForm(new DeliveryType());
 
