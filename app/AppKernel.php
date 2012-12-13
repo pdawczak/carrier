@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new CRR\WebBundle\CRRWebBundle(),
+            new CRR\Bundle\PersonBundle\CRRPersonBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
