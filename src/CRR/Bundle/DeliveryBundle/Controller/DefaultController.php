@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use CRR\Bundle\DeliveryBundle\Form\DeliveryType;
+use CRR\Bundle\DeliveryBundle\Entity\Delivery;
 
 /**
  * @Route("/deliveries")
@@ -30,7 +31,9 @@ class DefaultController extends Controller
      */
     public function newAction()
     {
-        $form = $this->createForm(new DeliveryType());
+        $delivery = $this->get('crr_delivery.delivery.repository')->buildDelivery();
+
+        $form = $this->createForm(new DeliveryType(), $delivery);
 
         return array(
             'form'  => $form->createView(),
@@ -44,7 +47,9 @@ class DefaultController extends Controller
      */
     public function createAction()
     {
-        $form = $this->createForm(new DeliveryType());
+        $delivery = $this->get('crr_delivery.delivery.repository')->buildDelivery();
+
+        $form = $this->createForm(new DeliveryType(), $delivery);
 
         if ($this->get('utils.form.persist')->process($form)) {
             $this->get('session')->getFlashBag()->add('success', 'Dziękujemy za złożenie zamówienia!');
