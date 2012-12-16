@@ -49,9 +49,13 @@ class Delivery
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(array $packageTypes = array())
     {
         $this->packages = new ArrayCollection();
+
+        foreach ($packageTypes as $type) {
+            $this->addPackage(new Package($type));
+        }
     }
 
     /**
@@ -119,6 +123,7 @@ class Delivery
     public function addPackage(Package $packages)
     {
         $this->packages[] = $packages;
+        $packages->setDelivery($this);
     
         return $this;
     }
