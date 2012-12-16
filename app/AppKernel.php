@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new CRR\WebBundle\CRRWebBundle(),
             new CRR\Bundle\PersonBundle\CRRPersonBundle(),
             new CRR\Bundle\DeliveryBundle\CRRDeliveryBundle(),
+            new CRR\Bundle\PackageBundle\CRRPackageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

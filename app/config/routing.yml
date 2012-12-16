@@ -1,3 +1,8 @@
+crr_package:
+    resource: "@CRRPackageBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 crr_delivery:
     resource: "@CRRDeliveryBundle/Controller/"
     type:     annotation
