@@ -12,4 +12,26 @@ use Doctrine\ORM\EntityRepository;
  */
 class DeliveryRepository extends EntityRepository
 {
+    public function getPackageTypes()
+    {
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb
+            ->select('p')
+            ->from('CRRPackageBundle:PackageType', 'p')
+            ->orderBy('p.sort', 'DESC')
+        ;
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
+     * @return Delivery
+     */
+    public function buildDelivery()
+    {
+        return new Delivery(
+            $this->getPackageTypes()
+        );
+    }
 }

@@ -1,0 +1,8 @@
+<div class="row-fluid">
+    <div class="span1"></div>
+    {% for form in collection %}
+        <div class="span1">
+            {% include 'CRRPackageBundle:Default:_form.html.twig' with { form: form } %}
+        </div>
+    {% endfor %}
+</div>

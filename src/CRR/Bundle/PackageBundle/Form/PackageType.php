@@ -1,31 +1,29 @@
 <?php
 
-namespace CRR\Bundle\PersonBundle\Form;
+namespace CRR\Bundle\PackageBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AddressType extends AbstractType
+class PackageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('address' , null, array('label' => 'Adres'))
-            ->add('city'    , null, array('label' => 'Miasto'))
-            ->add('postCode', null, array('label' => 'Kod pocztowy'))
+            ->add('count')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CRR\Bundle\PersonBundle\Entity\Address'
+            'data_class' => 'CRR\Bundle\PackageBundle\Entity\Package'
         ));
     }
 
     public function getName()
     {
-        return 'crr_bundle_personbundle_addresstype';
+        return 'crr_bundle_packagebundle_packagetype';
     }
 }
