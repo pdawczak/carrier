@@ -1,7 +1,16 @@
 <form action="{{ path('crr_delivery_create') }}" method="post" class="form-horizontal">
-    {{ form_row(form.sender) }}
-    {{ form_row(form.receiver) }}
+
+    <fieldset>
+        <legend>Sender</legend>
+        {% include 'CRRPersonBundle:Default:_form_person.html.twig' with { form: form.sender } %}
+    </fieldset>
+
+    <fieldset>
+        <legend>Receiver</legend>
+        {% include 'CRRPersonBundle:Default:_form_person.html.twig' with { form: form.receiver } %}
+    </fieldset>
 
     {{ form_rest(form) }}
+
     <button type="submit" class="btn btn-success">Submit</button>
 </form>
