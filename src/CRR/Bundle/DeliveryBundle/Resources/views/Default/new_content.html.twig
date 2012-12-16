@@ -10,6 +10,11 @@
         {% include 'CRRPersonBundle:Default:_form_person.html.twig' with { form: form.receiver } %}
     </fieldset>
 
+    <fieldset>
+        <legend>Package</legend>
+        {% include 'CRRPackageBundle:Default:_form_collection.html.twig' with { collection: form.packages } %}
+    </fieldset>
+
     {{ form_rest(form) }}
 
     <button type="submit" class="btn btn-success">Submit</button>
