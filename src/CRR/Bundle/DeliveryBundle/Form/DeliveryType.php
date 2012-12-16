@@ -21,7 +21,8 @@ class DeliveryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CRR\Bundle\DeliveryBundle\Entity\Delivery'
+            'data_class'         => 'CRR\Bundle\DeliveryBundle\Entity\Delivery',
+            'cascade_validation' => true,
         ));
     }
 

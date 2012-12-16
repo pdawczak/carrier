@@ -25,7 +25,8 @@ class PersonType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CRR\Bundle\PersonBundle\Entity\Person'
+            'data_class'         => 'CRR\Bundle\PersonBundle\Entity\Person',
+            'cascade_validation' => true,
         ));
     }
 
