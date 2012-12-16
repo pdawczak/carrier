@@ -25,6 +25,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/new", name="crr_delivery_new")
+     * @Method("GET")
      * @Template()
      */
     public function newAction()
@@ -44,6 +45,13 @@ class DefaultController extends Controller
     public function createAction()
     {
         $form = $this->createForm(new DeliveryType());
+
+        if ($this->get('utils.form.persist')->process($form)) {
+            $this->get('session')->getFlashBag()->add('success', 'Dziękujemy za złożenie zamówienia!');
+            return $this->redirect(
+                $this->generateUrl('homepage')
+            );
+        }
 
         return array(
             'form'  => $form->createView(),
