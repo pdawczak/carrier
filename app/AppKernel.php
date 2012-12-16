@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new CRR\WebBundle\CRRWebBundle(),
             new CRR\Bundle\PersonBundle\CRRPersonBundle(),
+            new CRR\Bundle\DeliveryBundle\CRRDeliveryBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

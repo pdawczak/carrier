@@ -9,8 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
-     * @Template()
+     * Route("/")
+     * Template()
      */
     public function indexAction()
     {
