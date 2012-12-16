@@ -1,8 +1,19 @@
 parameters:
-    crr_delivery.form.persist.class: CRR\Bundle\DeliveryBundle\Form\Handler\PersistFormHandler
+    crr_delivery.form.persist.class:        CRR\Bundle\DeliveryBundle\Form\Handler\PersistFormHandler
+    crr_delivery.delivery.entity.class:     CRR\Bundle\DeliveryBundle\Entity\Delivery
+    crr_delivery.delivery.repository.class: CRR\Bundle\DeliveryBundle\Entity\DeliveryRepository
 
 services:
     utils.form.persist:
         class:      %crr_delivery.form.persist.class%
         scope:      request
         arguments:  [ @request, @doctrine.orm.entity_manager ]
+
+    crr_delivery.delivery.entity:
+            class:              %crr_delivery.delivery.entity.class%
+
+    crr_delivery.delivery.repository:
+            class:              %crr_delivery.delivery.repository.class%
+            factory_service:    doctrine.orm.entity_manager
+            factory_method:     getRepository
+            arguments:          [ %crr_delivery.delivery.entity.class% ]
