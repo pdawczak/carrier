@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use CRR\Bundle\PersonBundle\Form\PersonType;
+use CRR\Bundle\PackageBundle\Form\PackageType;
 
 class DeliveryType extends AbstractType
 {
@@ -15,6 +16,7 @@ class DeliveryType extends AbstractType
         $builder
             ->add('sender'  , new PersonType(), array('required' => true))
             ->add('receiver', new PersonType(), array('required' => true))
+            ->add('packages', 'collection'    , array('type' => new PackageType()))
         ;
     }
 
