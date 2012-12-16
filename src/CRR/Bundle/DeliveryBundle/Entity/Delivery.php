@@ -26,14 +26,14 @@ class Delivery
     /**
      * @var Person $sender
      *
-     * @ORM\ManyToOne(targetEntity="CRR\Bundle\PersonBundle\Entity\Person")
+     * @ORM\ManyToOne(targetEntity="CRR\Bundle\PersonBundle\Entity\Person", cascade={"persist"})
      */
     protected $sender;
 
     /**
      * @var Person $receiver
      *
-     * @ORM\ManyToOne(targetEntity="CRR\Bundle\PersonBundle\Entity\Person")
+     * @ORM\ManyToOne(targetEntity="CRR\Bundle\PersonBundle\Entity\Person", cascade={"persist"})
      */
     protected $receiver;
 

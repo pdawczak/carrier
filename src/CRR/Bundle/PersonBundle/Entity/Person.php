@@ -4,6 +4,8 @@ namespace CRR\Bundle\PersonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Person
  *
@@ -46,6 +48,7 @@ class Person
      * @var string $email
      *
      * @ORM\Column(type="string", length=150)
+     * @Assert\Email()
      */
     private $email;
 
@@ -53,13 +56,14 @@ class Person
      * @var string $phone
      *
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank()
      */
     private $phone;
 
     /**
      * @var Address $address
      *
-     * @ORM\OneToOne(targetEntity="Address")
+     * @ORM\OneToOne(targetEntity="Address", cascade={"persist"})
      */
     private $address;
 
