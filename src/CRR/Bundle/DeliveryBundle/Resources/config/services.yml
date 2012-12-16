@@ -1,3 +1,8 @@
 parameters:
+    crr_delivery.form.persist.class: CRR\Bundle\DeliveryBundle\Form\Handler\PersistFormHandler
 
 services:
+    utils.form.persist:
+        class:      %crr_delivery.form.persist.class%
+        scope:      request
+        arguments:  [ @request, @doctrine.orm.entity_manager ]
