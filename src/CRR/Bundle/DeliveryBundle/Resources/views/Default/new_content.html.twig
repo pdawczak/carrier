@@ -1,21 +1,24 @@
 <form action="{{ path('crr_delivery_create') }}" method="post" class="form-horizontal">
 
     <fieldset>
-        <legend>Sender</legend>
+        <legend>Nadawca</legend>
         {% include 'CRRPersonBundle:Default:_form_person.html.twig' with { form: form.sender } %}
     </fieldset>
 
     <fieldset>
-        <legend>Receiver</legend>
+        <legend>Odbiorca</legend>
         {% include 'CRRPersonBundle:Default:_form_person.html.twig' with { form: form.receiver } %}
     </fieldset>
 
     <fieldset>
-        <legend>Package</legend>
+        <legend>Przesyłki</legend>
         {% include 'CRRPackageBundle:Default:_form_collection.html.twig' with { collection: form.packages } %}
     </fieldset>
 
     {{ form_rest(form) }}
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success">Złóż zamówienie</button>
+        <a href="{{ path('homepage') }}" class="btn btn-danger">Anuluj</a>
+    </div>
 </form>
