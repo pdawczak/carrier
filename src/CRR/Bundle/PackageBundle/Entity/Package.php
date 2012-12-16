@@ -4,6 +4,8 @@ namespace CRR\Bundle\PackageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use CRR\Bundle\DeliveryBundle\Entity\Delivery;
+
 /**
  * Package
  *
@@ -34,7 +36,14 @@ class Package
      * @ORM\ManyToOne(targetEntity="PackageType", cascade={"persist"})
      * @ORM\JoinColumn(name="package_type_id", referencedColumnName="id")
      */
-    private $packageType;
+    protected $packageType;
+
+    /**
+     * @var Delivery
+     *
+     * @ORM\ManyToOne(targetEntity="CRR\Bundle\DeliveryBundle\Entity\Delivery", inversedBy="packages")
+     */
+    protected $delivery;
 
     public function __construct(PackageType $type = null)
     {
@@ -95,5 +104,28 @@ class Package
     public function getPackageType()
     {
         return $this->packageType;
+    }
+
+    /**
+     * Set delivery
+     *
+     * @param \CRR\Bundle\DeliveryBundle\Entity\Delivery $delivery
+     * @return Package
+     */
+    public function setDelivery(Delivery $delivery = null)
+    {
+        $this->delivery = $delivery;
+    
+        return $this;
+    }
+
+    /**
+     * Get delivery
+     *
+     * @return \CRR\Bundle\DeliveryBundle\Entity\Delivery 
+     */
+    public function getDelivery()
+    {
+        return $this->delivery;
     }
 }

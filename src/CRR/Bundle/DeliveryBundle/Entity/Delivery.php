@@ -3,6 +3,9 @@
 namespace CRR\Bundle\DeliveryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use CRR\Bundle\PackageBundle\Entity\Package;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use CRR\Bundle\PersonBundle\Entity\Person;
 
@@ -36,6 +39,20 @@ class Delivery
      * @ORM\ManyToOne(targetEntity="CRR\Bundle\PersonBundle\Entity\Person", cascade={"persist"})
      */
     protected $receiver;
+
+    /**
+     * @var Collection $packages
+     * @ORM\OneToMany(targetEntity="CRR\Bundle\PackageBundle\Entity\Package", mappedBy="delivery", cascade={"persist"})
+     */
+    protected $packages;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->packages = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -91,5 +108,38 @@ class Delivery
     public function getReceiver()
     {
         return $this->receiver;
+    }
+    
+    /**
+     * Add packages
+     *
+     * @param \CRR\Bundle\PackageBundle\Entity\Package $packages
+     * @return Delivery
+     */
+    public function addPackage(Package $packages)
+    {
+        $this->packages[] = $packages;
+    
+        return $this;
+    }
+
+    /**
+     * Remove packages
+     *
+     * @param \CRR\Bundle\PackageBundle\Entity\Package $packages
+     */
+    public function removePackage(Package $packages)
+    {
+        $this->packages->removeElement($packages);
+    }
+
+    /**
+     * Get packages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPackages()
+    {
+        return $this->packages;
     }
 }
