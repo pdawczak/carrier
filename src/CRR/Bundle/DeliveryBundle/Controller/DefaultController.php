@@ -26,6 +26,41 @@ class DefaultController extends Controller
 
     /**
      * @Route("/new", name="crr_delivery_new")
+     * @Template
+     */
+    public function newFlowAction()
+    {
+        $delivery = $this->get('crr_delivery.delivery.repository')->buildDelivery();
+
+        $flow = $this->get('crr_delivery.form.flow.delivery');
+        $flow->bind($delivery);
+
+        $form = $flow->createForm($delivery);
+        if ($flow->isValid($form)) {
+            $flow->saveCurrentStepData();
+
+            if ($flow->nextStep()) {
+                $form = $flow->createForm($delivery);
+            } else {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($delivery);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add('success', 'Dziękujemy za złożenie zamówienia!');
+                $flow->reset();
+                return $this->redirect($this->generateUrl('homepage'));
+            }
+        }
+
+        return array(
+            'form'      => $form->createView(),
+            'flow'      => $flow,
+            'delivery'  => $form->getData()
+        );
+    }
+
+    /**
+     * Route("/new", name="crr_delivery_new")
      * @Method("GET")
      * @Template()
      */
@@ -41,7 +76,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/new", name="crr_delivery_create")
+     * Route("/new", name="crr_delivery_create")
      * @Method("POST")
      * @Template("CRRDeliveryBundle:Default:new.html.twig")
      */
