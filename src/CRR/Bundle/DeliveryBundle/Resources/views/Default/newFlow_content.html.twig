@@ -1,0 +1,31 @@
+<div>
+    {% include 'CRRDeliveryBundle:Default:_stepList.html.twig' %}
+</div>
+
+<form method="post" {{ form_enctype(form) }} class="form-horizontal">
+    {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}
+
+    {{ form_errors(form) }}
+
+    {% if flow.getCurrentStep() == 1 %}
+        {% include 'CRRPersonBundle:Default:_form_person.html.twig' with { form: form.sender } %}
+    {% endif %}
+
+    {% if flow.getCurrentStep() == 2 %}
+        {% include 'CRRPersonBundle:Default:_form_person.html.twig' with { form: form.receiver } %}
+    {% endif %}
+
+    {% if flow.getCurrentStep() == 3 %}
+        {% include 'CRRPackageBundle:Default:_form_collection.html.twig' with { collection: form.packages } %}
+    {% endif %}
+
+    {% if flow.getCurrentStep() == 4 %}
+        {% include 'CRRDeliveryBundle:Default:_form_summary.html.twig' with { collection: delivery } %}
+    {% endif %}
+
+    {{ form_rest(form) }}
+
+    <div class="form-actions">
+        {% include 'CRRDeliveryBundle:Default:_buttons.html.twig' %}
+    </div>
+</form>
