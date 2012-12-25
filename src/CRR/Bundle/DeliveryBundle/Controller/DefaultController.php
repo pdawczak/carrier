@@ -37,6 +37,41 @@ class DefaultController extends Controller
 
         $form = $flow->createForm($delivery);
         if ($flow->isValid($form)) {
+            if ($flow->getCurrentStep() >= 3) {
+                $delivery
+                    ->getSender()
+                        ->getAddress()
+                        ->setLat(
+                            $this
+                                ->get('bazinga_geocoder.geocoder')
+                                ->geoCode($delivery->getSender()->getAddress())
+                                ->getLatitude()
+                        )
+                        ->setLng(
+                            $this
+                                ->get('bazinga_geocoder.geocoder')
+                                ->geoCode($delivery->getSender()->getAddress())
+                                ->getLongitude()
+                        )
+                ;
+                $delivery
+                    ->getReceiver()
+                        ->getAddress()
+                        ->setLat(
+                            $this
+                                ->get('bazinga_geocoder.geocoder')
+                                ->geoCode($delivery->getReceiver()->getAddress())
+                                ->getLatitude()
+                        )
+                        ->setLng(
+                            $this
+                                ->get('bazinga_geocoder.geocoder')
+                                ->geoCode($delivery->getReceiver()->getAddress())
+                                ->getLongitude()
+                        )
+                ;
+            }
+
             $flow->saveCurrentStepData();
 
             if ($flow->nextStep()) {
