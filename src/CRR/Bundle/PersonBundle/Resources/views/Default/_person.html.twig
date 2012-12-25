@@ -1,4 +1,7 @@
 <strong>{{ person.firstName }} {{ person.lastName }}</strong><br>
+{% if person.companyName %}
+    <strong>{{ person.companyName }}</strong><br>
+{% endif %}
 {{ person.address.address }}<br>
 {{ person.address.postCode }} {{ person.address.city }}<br>
 <abbr title="E Mail">@:</abbr> {{ person.email }}<br>
