@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new CRR\Bundle\PersonBundle\CRRPersonBundle(),
             new CRR\Bundle\DeliveryBundle\CRRDeliveryBundle(),
             new CRR\Bundle\PackageBundle\CRRPackageBundle(),
+            new Bazinga\Bundle\GeocoderBundle\BazingaGeocoderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
