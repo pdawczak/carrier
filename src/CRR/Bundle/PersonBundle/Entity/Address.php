@@ -43,6 +43,20 @@ class Address
     private $postCode;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", precision=16, scale=14, nullable=true)
+     */
+    private $lat;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", precision=16, scale=14, nullable=true)
+     */
+    private $lng;
+
+    /**
      * Get id
      *
      * @return integer 
