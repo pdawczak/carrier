@@ -57,6 +57,14 @@ class Address
     private $lng;
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf('%s %s, %s', $this->getPostCode(), $this->getCity(), $this->getAddress());
+    }
+
+    /**
      * Get id
      *
      * @return integer 
