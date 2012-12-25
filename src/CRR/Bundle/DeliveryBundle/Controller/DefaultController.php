@@ -42,7 +42,7 @@ class DefaultController extends Controller
             if ($flow->nextStep()) {
                 $form = $flow->createForm($delivery);
             } else {
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($delivery);
                 $em->flush();
 
