@@ -43,6 +43,28 @@ class Address
     private $postCode;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", precision=16, scale=14, nullable=true)
+     */
+    private $lat;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", precision=16, scale=14, nullable=true)
+     */
+    private $lng;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf('%s %s, %s', $this->getPostCode(), $this->getCity(), $this->getAddress());
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -119,5 +141,51 @@ class Address
     public function getPostCode()
     {
         return $this->postCode;
+    }
+
+    /**
+     * Set lat
+     *
+     * @param float $lat
+     * @return Address
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+    
+        return $this;
+    }
+
+    /**
+     * Get lat
+     *
+     * @return float 
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * Set lng
+     *
+     * @param float $lng
+     * @return Address
+     */
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
+    
+        return $this;
+    }
+
+    /**
+     * Get lng
+     *
+     * @return float 
+     */
+    public function getLng()
+    {
+        return $this->lng;
     }
 }
