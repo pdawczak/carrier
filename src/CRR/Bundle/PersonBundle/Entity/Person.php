@@ -27,6 +27,7 @@ class Person
      * @var string $firstName
      *
      * @ORM\Column(name="first_name", type="string", length=15, nullable=true)
+     * @Assert\NotBlank()
      */
     private $firstName;
 
@@ -34,6 +35,7 @@ class Person
      * @var string $lastName
      *
      * @ORM\Column(name="last_name", type="string", length=25, nullable=true)
+     * @Assert\NotBlank()
      */
     private $lastName;
 
