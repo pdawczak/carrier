@@ -13,6 +13,18 @@
 
 <div class="row-fluid">
     <div class="span12">
+        Przesyłki:
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        {% include 'CRRPackageBundle:Default:_packages.html.twig' with { delivery: delivery } %}
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
         <a href="{{ path('crr_delivery_admin_index') }}" class="btn">Powrót</a>
     </div>
 </div>
