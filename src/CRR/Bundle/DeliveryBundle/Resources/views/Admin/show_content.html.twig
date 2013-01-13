@@ -1,0 +1,18 @@
+<div class="row-fluid">
+    <div class="span6">
+        <address>
+            Od: {% include 'CRRPersonBundle:Default:_person.html.twig' with { person: delivery.sender } %}
+        </address>
+    </div>
+    <div class="span6">
+        <address>
+            Do: {% include 'CRRPersonBundle:Default:_person.html.twig' with { person: delivery.receiver } %}
+        </address>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <a href="{{ path('crr_delivery_admin_index') }}" class="btn">Powrót</a>
+    </div>
+</div>
