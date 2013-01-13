@@ -1,0 +1,8 @@
+{{ form_row(form.firstName) }}
+{{ form_row(form.lastName) }}
+{{ form_row(form.companyName) }}
+
+{{ form_row(form.phone) }}
+{{ form_row(form.email) }}
+
+{% include 'CRRPersonBundle:Default:_form_address.html.twig' with { form: form.address } %}
