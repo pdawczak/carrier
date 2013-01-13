@@ -47,7 +47,8 @@ class Package
 
     public function __construct(PackageType $type = null)
     {
-        $this->packageType = $type;
+        $this->packageType  = $type;
+        $this->count        = 0;
     }
 
     /**
