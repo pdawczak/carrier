@@ -1,0 +1,14 @@
+Carrier.
+System track for deliveries.
+
+v1.0
+- Entities:
+  * Person
+  * Address
+  * Delivery
+  * Package
+  * PackageType
+
+- It allows to create new Deliveries;
+
+- Simple admin module for previewing existing Deliveries.
