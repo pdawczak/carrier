@@ -1,0 +1,12 @@
+<div class="row-fluid">
+    <div class="span6">
+        <address>
+            Od: {% include 'CRRPersonBundle:Default:_person.html.twig' with { person: delivery.sender } %}
+        </address>
+    </div>
+    <div class="span6">
+        <address>
+            Do: {% include 'CRRPersonBundle:Default:_person.html.twig' with { person: delivery.receiver } %}
+        </address>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{% extends 'CRRWebBundle::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Admin / Delivery (#{{ delivery.id }})
+{% endblock %}
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span12">
+            {% include "CRRDeliveryBundle:Admin:show_content.html.twig" %}
+        </div>
+    </div>
+{% endblock %}
