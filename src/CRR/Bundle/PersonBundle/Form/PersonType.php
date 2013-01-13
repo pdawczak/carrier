@@ -15,9 +15,24 @@ class PersonType extends AbstractType
         $builder
             ->add('firstName'   , null, array('label' => 'Imię'))
             ->add('lastName'    , null, array('label' => 'Nazwisko'))
-            ->add('companyName' , null, array('label' => 'Nazwa firmy'))
-            ->add('email'       , null, array('label' => 'Email'))
-            ->add('phone'       , null, array('label' => 'Telefon'))
+            ->add('companyName' , null, array(
+                'label'     => 'Nazwa firmy',
+                'attr'      => array(
+                    'class' => 'input-xxlarge'
+                )
+            ))
+            ->add('email'       , null, array(
+                'label' => 'Email',
+                'attr'      => array(
+                    'class' => 'input-xlarge'
+                )
+            ))
+            ->add('phone'       , null, array(
+                'label'     => 'Telefon',
+                'attr'      => array(
+                    'class' => 'input-small'
+                )
+            ))
             ->add('address'     , new AddressType(), array('required' => true))
         ;
     }
