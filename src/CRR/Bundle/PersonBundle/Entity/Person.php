@@ -70,6 +70,14 @@ class Person
     private $address;
 
     /**
+     * @return string
+     */
+    public function getFullName()
+    {
+        return sprintf('%s %s', $this->getFirstName(), $this->getLastName());
+    }
+
+    /**
      * Get id
      *
      * @return integer 
